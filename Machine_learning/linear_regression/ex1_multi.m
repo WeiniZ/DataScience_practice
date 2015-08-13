@@ -106,7 +106,13 @@ fprintf('\n');
 % not need to be normalized.
 price = 0; % You should change this
 
+test = [1650, 3];
+test_norm = zeros(1, size(test,2));
+for j = 1 : size(test,2)
+    test_norm(j) = (test(j) - mu(j))/sigma(j);
+end
 
+price = theta'* ([1  test_norm])';
 % ============================================================
 
 fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
@@ -150,6 +156,12 @@ fprintf('\n');
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
 price = 0; % You should change this
+test = [1650, 3];
+
+
+test_norm = [1, test];
+
+price = theta'* test_norm';
 
 
 % ============================================================
