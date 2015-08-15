@@ -16,7 +16,9 @@ p = zeros(m, 1);
 %
 
 
-
+for i = 1:m 
+    p(i)  = X’*theta;
+end
 
 
 

@@ -20,6 +20,17 @@ grad = zeros(size(theta));
 % Note: grad should have the same dimensions as theta
 %
 
+% X is m by (n+1);
+% theta is (n+1) by 1
+% y is m by 1 
+
+
+hx = X * theta;
+
+J = (1/m)*(-y’*log(hx) - (ones(m,1) - y)’*log(1-hx));
+
+grad = (1/m)*X’*(hx - y);
+
 
 
 
