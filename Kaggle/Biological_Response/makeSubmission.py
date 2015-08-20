@@ -4,12 +4,12 @@ from sklearn.ensemble import RandomForestClassifier
 
 def main():
     # create the training & test sets
-    dataset = pd.read_csv('Data/train.csv')
+    dataset = pd.read_csv('train.csv')
 
     target = dataset.Activity.values
     train = dataset.drop('Activity', axis=1).values
 
-    test = pd.read_csv('Data/test.csv').values
+    test = pd.read_csv('test.csv').values
 
     # create and train the random forest
     # n_jobs set to -1 will use the number of cores present on your system.
@@ -18,7 +18,7 @@ def main():
     predicted_probs = [x[1] for x in rf.predict_proba(test)]
     predicted_probs = pd.Series(predicted_probs)
 
-    predicted_probs.to_csv('Data/submission.csv', index=False,
+    predicted_probs.to_csv('submission.csv', index=False,
                             float_format="%f")
 
 if __name__ == "__main__":
